@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 
 import joblib
 import numpy as np
@@ -17,6 +18,7 @@ import pandas as pd
 from . import config
 from .data import add_features, normalize_text, standardize_columns
 from .features import feature_columns
+from .validate import check_inputs
 
 MODEL_PATH = config.MODELS_DIR / "vehicle_price_model.joblib"
 
@@ -46,6 +48,8 @@ def main() -> None:
     args = p.parse_args()
 
     df = pd.DataFrame([json.loads(args.json)]) if args.json else pd.read_csv(args.csv)
+    for msg in check_inputs(df):
+        print(f"warning: {msg}", file=sys.stderr)
     for i, price in enumerate(predict(df)):
         print(f"Vehicle {i + 1}: estimated MSRP ${price:,.0f}")
 

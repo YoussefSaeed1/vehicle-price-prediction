@@ -30,7 +30,7 @@ Test set: 1,964 cars (random 80/20 split). All models train on `log(1 + price)` 
 | R² (log price) | 0.976 | 0.957 |
 
 The free-text `model` name was tested as an extra feature. It slightly improves the random split (MAPE 6.9% → 6.7%) but **hurts** on unseen car models (10.2% → 10.7%), so it's left out.
-All numbers are in [`reports/metrics.json`](reports/metrics.json).
+All numbers are in [`reports/metrics.json`](reports/metrics.json). Intended use, limitations and error by price band are in the [model card](MODEL_CARD.md).
 
 <p align="center">
   <img src="reports/figures/07_best_model_diagnostics.png" width="100%">
@@ -62,6 +62,8 @@ Data: [Car Features and MSRP](https://www.kaggle.com/datasets/cooperunion/cardat
 
 Final dataset: **9,820 cars**.
 
+These checks are automated in `src/vehicle_price/validate.py`, which runs before every training run and stops it on errors (missing columns, invalid prices or years). Warnings go to [`reports/data_validation.json`](reports/data_validation.json). It also caught one row the first review missed: a 2017 Audi A6 listed at **354 highway MPG**, almost certainly a typo for 34.
+
 ---
 
 ## Project structure
@@ -77,13 +79,16 @@ Final dataset: **9,820 cars**.
 │   ├── features.py    # leak-free ColumnTransformer, multi-hot encoder
 │   ├── models.py      # baseline, Ridge, Random Forest, Gradient Boosting
 │   ├── evaluate.py    # metrics in log space and dollars
+│   ├── validate.py    # data validation (training data + prediction inputs)
 │   ├── train.py       # train, compare, save best model
 │   └── predict.py     # CLI for new predictions
 ├── reports/
 │   ├── figures/       # all charts
 │   ├── metrics.json
+│   ├── data_validation.json
 │   └── model_comparison.csv
-└── tests/             # pytest
+├── tests/             # pytest
+└── MODEL_CARD.md      # intended use, performance, limitations
 ```
 
 ## Quick start
@@ -102,6 +107,9 @@ python -m vehicle_price.predict --json '{"Make": "Toyota", "Year": 2017, "Engine
   "Engine Cylinders": 4, "Transmission Type": "AUTOMATIC", "Driven_Wheels": "front wheel drive",
   "Number of Doors": 4, "Vehicle Size": "Midsize", "Vehicle Style": "Sedan",
   "highway MPG": 33, "city mpg": 24, "Popularity": 2031, "Engine Fuel Type": "regular unleaded"}'
+
+# Validate the data on its own
+python -m vehicle_price.validate
 
 # Run tests
 pytest

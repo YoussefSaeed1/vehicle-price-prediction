@@ -13,7 +13,7 @@ import joblib
 import pandas as pd
 from sklearn.model_selection import GroupShuffleSplit, train_test_split
 
-from . import config, data, evaluate, models
+from . import config, data, evaluate, models, validate
 from .features import feature_columns
 
 
@@ -42,7 +42,14 @@ def main() -> None:
     config.MODELS_DIR.mkdir(exist_ok=True)
     config.REPORTS_DIR.mkdir(exist_ok=True)
 
-    df = data.load_clean()
+    # 0) Validate the raw data before anything is trained on it.
+    raw = data.load_raw()
+    report = validate.assert_valid(raw)
+    with open(config.REPORTS_DIR / "data_validation.json", "w") as f:
+        json.dump(report.to_dict(), f, indent=2)
+    print(f"Data validation passed ({len(report.warnings)} warnings, see reports/data_validation.json)")
+
+    df = data.clean(raw)
     train, test = split(df)
     print(f"Rows in scope: {len(df):,}  (train {len(train):,} / test {len(test):,})")
 

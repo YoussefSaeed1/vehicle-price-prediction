@@ -1,0 +1,295 @@
+{
+  "rows": 11914,
+  "passed": true,
+  "errors": 0,
+  "warnings": 7,
+  "checks": [
+    {
+      "name": "required columns present",
+      "severity": "error",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "dataset is not empty",
+      "severity": "error",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "numeric columns are numeric",
+      "severity": "error",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "msrp present and > 0",
+      "severity": "error",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "make and year present",
+      "severity": "error",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "year within [1,990 - 2,017]",
+      "severity": "error",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "no exact duplicate rows",
+      "severity": "warning",
+      "passed": false,
+      "failing_rows": 715,
+      "detail": "dropped during cleaning",
+      "examples": []
+    },
+    {
+      "name": "engine_hp has no missing values",
+      "severity": "warning",
+      "passed": false,
+      "failing_rows": 69,
+      "detail": "imputed by the pipeline",
+      "examples": []
+    },
+    {
+      "name": "engine_cylinders has no missing values",
+      "severity": "warning",
+      "passed": false,
+      "failing_rows": 30,
+      "detail": "imputed by the pipeline",
+      "examples": []
+    },
+    {
+      "name": "number_of_doors has no missing values",
+      "severity": "warning",
+      "passed": false,
+      "failing_rows": 6,
+      "detail": "imputed by the pipeline",
+      "examples": []
+    },
+    {
+      "name": "highway_mpg has no missing values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "city_mpg has no missing values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "popularity has no missing values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "make has no missing values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "engine_fuel_type has no missing values",
+      "severity": "warning",
+      "passed": false,
+      "failing_rows": 3,
+      "detail": "imputed by the pipeline",
+      "examples": []
+    },
+    {
+      "name": "transmission_type has no missing values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "driven_wheels has no missing values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "vehicle_size has no missing values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "vehicle_style has no missing values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "engine_hp within [50 - 1,200]",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "engine_cylinders within [0 - 16]",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "number_of_doors within [2 - 4]",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "highway_mpg within [5 - 150]",
+      "severity": "warning",
+      "passed": false,
+      "failing_rows": 1,
+      "detail": "",
+      "examples": [
+        {
+          "make": "audi",
+          "model": "a6",
+          "year": 2017,
+          "highway_mpg": 354
+        }
+      ]
+    },
+    {
+      "name": "city_mpg within [5 - 150]",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "popularity within [0 - 10,000]",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "0 cylinders only on electric cars",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "engine_fuel_type uses known values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "transmission_type uses known values",
+      "severity": "warning",
+      "passed": false,
+      "failing_rows": 19,
+      "detail": "unexpected: unknown",
+      "examples": []
+    },
+    {
+      "name": "driven_wheels uses known values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "vehicle_size uses known values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "vehicle_style uses known values",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "market_category tags are known",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "one popularity value per make",
+      "severity": "warning",
+      "passed": true,
+      "failing_rows": 0,
+      "detail": "",
+      "examples": []
+    },
+    {
+      "name": "placeholder prices (year < 2001, msrp <= $2,500)",
+      "severity": "info",
+      "passed": true,
+      "failing_rows": 1291,
+      "detail": "out of scope",
+      "examples": []
+    },
+    {
+      "name": "msrp >= $500,000",
+      "severity": "info",
+      "passed": true,
+      "failing_rows": 11,
+      "detail": "out of scope",
+      "examples": []
+    }
+  ]
+}
