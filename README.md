@@ -128,17 +128,9 @@ Any missing field is imputed by the pipeline, so partial inputs work too (with l
 4. **Models:** median baseline, Ridge, Random Forest (300 trees), and Histogram Gradient Boosting.
 5. **Evaluation:** random 80/20 hold-out, plus a group split by car model to test generalization.
 
-## Changes from the first version
+## Course
 
-This started as my final project for **DS588: Advanced Programming for Data Science** (Faculty of Graduate Studies for Statistical Research, Cairo University). A review of the original notebook turned up issues that made its scores look better than they really were:
-
-- **Feature list was overwritten.** `cat_cols = df.select_dtypes("object").columns` replaced the chosen four columns, so the model actually used all eight text columns, including `model` (915 names), and silently dropped `number_of_doors`.
-- **Preprocessing leaked.** The scaler and encoder were fitted on the full dataset before the train/test split.
-- **The outlier filter was never applied.** A filtered `df_Cleaned` was created, but the models trained on the unfiltered `df`.
-- **Placeholder prices inflated R².** About 1,650 pre-2001 cars priced at ~$2,000 made "old = cheap" trivially easy to learn.
-- **Metrics were reported on the log scale only.** Nothing showed the error in dollars or percent.
-
-The original reported R² = 0.986 (log scale). This version reports R² = 0.976 on a harder, cleaner problem, along with dollar and percentage errors and an unseen-model test.
+Built as my final project for **DS588: Advanced Programming for Data Science** (Faculty of Graduate Studies for Statistical Research, Cairo University).
 
 ## Limitations
 
